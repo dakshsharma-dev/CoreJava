@@ -1,4 +1,4 @@
-Functions vs Methods
+**_Functions vs Methods_**
 
 * Function: Independent block of code that can exist outside a class (C++, C, etc.).  
 * Method: A function that is associated with an object or class.  
@@ -6,7 +6,7 @@ Functions vs Methods
 * In C++, both standalone functions and class methods exist.  
 
 
-JDK vs JRE vs JVM
+**_JDK vs JRE vs JVM_**
 
 • JDK (Java Development Kit)
 - Used for developing Java applications.
@@ -51,4 +51,13 @@ Why Java is Platform Independent
 Rule of Thumb
 
 • If a compiler produces intermediate code (bytecode/IL) → potentially platform-independent.  
-• If a compiler produces native machine code directly → platform-dependent.
+• If a compiler produces native machine code directly → platform-dependent.  
+
+
+**_IMPORTANT NOTE_**:  
+boolean size is JVM implementation-dependent; Java does not specify a fixed size.
+
+
+**_TYPES OF DATATYPES:_**  
+Primitive Data Types: Store simple values directly in memory.  
+Non-Primitive (Reference) Data Types: Store MEMORY REFERENCES to objects.
