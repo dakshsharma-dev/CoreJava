@@ -61,3 +61,35 @@ boolean size is JVM implementation-dependent; Java does not specify a fixed size
 **_TYPES OF DATATYPES:_**  
 Primitive Data Types: Store simple values directly in memory.  
 Non-Primitive (Reference) Data Types: Store MEMORY REFERENCES to objects.
+
+**_Sort a map according to value NOT KEY in descending order(C++):_**
+
+```cpp
+map<int, int> mp = {
+  {1, 40},
+  {2, 10},
+  {3, 30},
+  {4, 20}
+};  
+vector<pair<int, int>> vec(mp.begin(), mp.end());
+
+sort( vec.begin(), vec.end(), 
+      [](const auto& a, const auto& b) {
+         return a.second > b.second;   // decreasing order of value  
+      });
+
+for (auto& [key, value] : vec) {  
+  cout << key << " " << value << '\n';
+}
+```
+
+
+Explanation:  
+* Third argument in sort function is custom comparator that tells sort() how to compare two elements.  
+* `[](...) { ... }` -> This is a lambda function. Think of it as a function written directly where it is needed.  
+* `[]` -> Part of lambda syntax. Empty `[]` means the function does not use any outside variables.  
+* (const auto& a, const auto& b) -> The two elements that sort() wants to compare.  
+* return a.second > b.second;  
+* sort() asks: "Should a be placed before b?"  
+true → Place a before b  
+false → Do not place a before b
