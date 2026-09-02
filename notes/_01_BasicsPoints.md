@@ -75,7 +75,10 @@ vector<pair<int, int>> vec(mp.begin(), mp.end());
 
 sort( vec.begin(), vec.end(), 
       [](const auto& a, const auto& b) {
-         return a.second > b.second;   // decreasing order of value  
+         if(a.second == b.second){
+             a.first < b.first;        // smaller interger first if freq are equal
+         }
+         return a.second > b.second;   // decreasing order of value (place element with larger freq before element with smaller freq)
       });
 
 for (auto& [key, value] : vec) {  
@@ -89,7 +92,8 @@ Explanation:
 * `[](...) { ... }` -> This is a lambda function. Think of it as a function written directly where it is needed.  
 * `[]` -> Part of lambda syntax. Empty `[]` means the function does not use any outside variables.  
 * (const auto& a, const auto& b) -> The two elements that sort() wants to compare.  
+* return a.first < b.first;
 * return a.second > b.second;  
-* sort() asks: "Should a be placed before b?"  
+* sort() asks: "Should a be placed before b?"  *******************************  [THIS IS THE MOST IMPORTANT THING]  
 true → Place a before b  
 false → Do not place a before b
