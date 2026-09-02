@@ -62,5 +62,33 @@ public class _05_Operators {
         Object obj = 10;
         System.out.println(obj instanceof Integer); // true
         System.out.println(obj instanceof String);  // false
+
+
+
+        /*
+            OPERATOR PRECEDENCE
+
+            Higher precedence → evaluated first
+
+            1.  expr++, expr--
+            2.  ++expr, --expr, +expr, -expr, ~, !
+            3.  *, /, %
+            4.  +, -
+            5.  <<, >>, >>>
+            6.  <, >, <=, >=, instanceof
+            7.  ==, !=
+            8.  &
+            9.  ^
+            10. |
+            11. &&
+            12. ||
+            13. ?:
+            14. =, +=, -=, *=, /=, %=, etc.
+
+            Associativity:
+            - Binary operators → generally Left to Right
+              (except assignment operators → Right to Left)
+            - Unary operators → Right to Left
+        */
     }
 }
