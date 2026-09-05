@@ -1,4 +1,4 @@
-**_Functions vs Methods_**
+## **_Functions vs Methods_**
 
 * Function: Independent block of code that can exist outside a class (C++, C, etc.).  
 * Method: A function that is associated with an object or class.  
@@ -6,7 +6,7 @@
 * In C++, both standalone functions and class methods exist.  
 
 
-**_JDK vs JRE vs JVM_**
+## **_JDK vs JRE vs JVM_**
 
 • JDK (Java Development Kit)
 - Used for developing Java applications.
@@ -54,15 +54,17 @@ Rule of Thumb
 • If a compiler produces native machine code directly → platform-dependent.  
 
 
-**_IMPORTANT NOTE_**:  
+### **_IMPORTANT NOTE_**:  
+
 boolean size is JVM implementation-dependent; Java does not specify a fixed size.
 
 
-**_TYPES OF DATATYPES:_**  
+### **_TYPES OF DATATYPES:_**  
+
 Primitive Data Types: Store simple values directly in memory.  
 Non-Primitive (Reference) Data Types: Store MEMORY REFERENCES to objects.
 
-**_SORT A MAP ACCORDING TO VALUE NOT KEY IN DESCENDING ORDER(C++):_**
+### **_SORT A MAP ACCORDING TO VALUE NOT KEY IN DESCENDING ORDER(C++):_**
 
 ```cpp
 map<int, int> mp = {
@@ -99,7 +101,8 @@ true → Place a before b
 false → Do not place a before b
 
 
-**_UNDERSTANDING JAVA'S CLASS AND FILE STRUCTURE:_**  
+## **_UNDERSTANDING JAVA'S CLASS AND FILE STRUCTURE:_**  
+
 Java internally organizes code at the class level, not the file level.
 
 Mental Model:
@@ -132,4 +135,33 @@ Mobile.class
 Battery.class  
 Charger.class  
 
-The compiler ultimately cares about classes, not the source file that contained them.
+The compiler ultimately cares about classes, not the source file that contained them.  
+
+## **_ACCESS MODIFIERS:_**
+
+Access Modifiers control the visibility/accessibility of classes, methods, variables, and constructors.
+
+| Modifier    | Access |
+|------------|---------|
+| `public`    | Accessible everywhere |
+| `protected` | Same package + subclasses in other packages |
+| `default`   | Same package only (no keyword) |
+| `private`   | Same class only |
+
+### Visibility Table
+
+| Modifier | Class | Package | Subclass | World |
+|----------|:-----:|:-------:|:--------:|:-----:|
+| `public` | ✔ | ✔ | ✔ | ✔ |
+| `protected` | ✔ | ✔ | ✔ | ✘ |
+| `default` | ✔ | ✔ | ✘ | ✘ |
+| `private` | ✔ | ✘ | ✘ | ✘ |
+
+### Notes
+
+- Top-level classes can only be `public` or `default` (package-private).
+- `private` and `protected` are allowed only for nested/inner classes, not top-level classes.
+- `private`/`protected` require an enclosing class to define their scope.
+- Prefer the most restrictive access modifier that works.
+- `private` + getters/setters is the foundation of encapsulation.
+
