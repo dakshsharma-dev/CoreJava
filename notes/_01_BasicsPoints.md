@@ -62,7 +62,7 @@ boolean size is JVM implementation-dependent; Java does not specify a fixed size
 Primitive Data Types: Store simple values directly in memory.  
 Non-Primitive (Reference) Data Types: Store MEMORY REFERENCES to objects.
 
-**_Sort a map according to value NOT KEY in descending order(C++):_**
+**_SORT A MAP ACCORDING TO VALUE NOT KEY IN DESCENDING ORDER(C++):_**
 
 ```cpp
 map<int, int> mp = {
@@ -97,3 +97,39 @@ Explanation:
 * sort() asks: "Should a be placed before b?"  *******************************  [THIS IS THE MOST IMPORTANT THING]  
 true → Place a before b  
 false → Do not place a before b
+
+
+**_UNDERSTANDING JAVA'S CLASS AND FILE STRUCTURE:_**  
+Java internally organizes code at the class level, not the file level.
+
+Mental Model:
+
+Package  
+├── Class A  
+├── Class B  
+├── Class C
+
+Files are just containers for class definitions; classes are the real entities Java tracks and compiles.
+
+Rules:
+1. A package cannot contain two classes with the same name.
+2. A .java file can contain multiple classes.
+3. At most one class can be public in a file.
+4. If a public class exists, the file name must match that public class name.
+
+Example:
+
+Mobile.java  
+├── public class Mobile  
+├── class Battery  
+└── class Charger  
+
+Java treats Mobile, Battery, and Charger as three separate classes.
+
+Compilation:  
+
+Mobile.class  
+Battery.class  
+Charger.class  
+
+The compiler ultimately cares about classes, not the source file that contained them.

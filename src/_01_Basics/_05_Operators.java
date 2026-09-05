@@ -1,4 +1,4 @@
-package Basics;
+package _01_Basics;
 
 public class _05_Operators {
     public static void main(String[] args){
