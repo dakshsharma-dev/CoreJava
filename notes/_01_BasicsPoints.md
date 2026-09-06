@@ -165,3 +165,37 @@ Access Modifiers control the visibility/accessibility of classes, methods, varia
 - Prefer the most restrictive access modifier that works.
 - `private` + getters/setters is the foundation of encapsulation.
 
+
+## ADDRESS vs REFERENCE vs POINTER  
+#### C++:
+- Address  
+  - &x         → gives the memory address of x  
+- Pointer  
+  ```int* p = &x;```
+  - Stores an address  
+  - Can be reseated  ```p = &y;   // valid```
+
+- Reference  
+  ```int& ref = x;```  
+  - An alias (**ANOTHER NAME**) for x  
+  - Must be initialized when declared  
+  - Cannot be reseated  
+  ```ref = 20;   // changes x```
+- ```fun(int&)```  
+  - pass by reference;
+  - not passing an address.
+  - Caller's variable can be modified.
+  - no copy is made
+- ```fun(int*)```
+  - pass a pointer (address)  
+  - Call: ```fun(&x);```
+
+Java:
+- No pointers exposed to the programmer
+- No address manipulation (&, *, pointer arithmetic, etc.)
+- Primitive variables store actual values
+- Object variables store references
+- A reference is a JVM-managed **HANDLE/LINK** to an object
+- References allow access to objects but are not raw memory addresses
+
+#### Therefore, a reference lets you reach and work with data stored in memory without exposing or requiring the raw memory address.
