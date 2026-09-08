@@ -12,7 +12,7 @@ public class _03_ArraysClass {
          */
 
         // 1. sort():                Syntax: Arrays.sort(arrayName);
-        // 2. binarySearch method(): Syntax: Arrays.binarySearch(arrayName, key) // if the element is found, it returns its index; otherwise, it returns a NEGATIVE VALUE INDICATING THE INSERTION POINT.
+        // 2. binarySearch method(): Syntax: Arrays.binarySearch(arrayName, key) // if the element is found, it returns its index; otherwise, it returns -(insertionPoint) - 1.
         int[] arr = {3, 4, 1, 56, 22};
         Arrays.sort(arr);
 
@@ -25,8 +25,8 @@ public class _03_ArraysClass {
         int[] a1 = {1, 2, 3, 4};
         int[] a2 = {5, 6, 7, 8};
         int[] a3 = {1, 2, 3, 4};
-        System.out.println(Arrays.compare(a1, a2)); // -1
-        System.out.println(Arrays.compare(a2, a1)); // 1
+        System.out.println(Arrays.compare(a1, a2)); // negative value
+        System.out.println(Arrays.compare(a2, a1)); // positive value
         System.out.println(Arrays.compare(a1, a3)); // 0
 
         // 4. Arrays.toString()
