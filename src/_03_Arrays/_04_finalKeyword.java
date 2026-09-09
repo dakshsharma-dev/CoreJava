@@ -27,8 +27,10 @@ public class _04_finalKeyword {
 
         // 2. Final reference → reference can't point to another object, but the object itself can still be modified.
         final ArrayList<Integer> list = new ArrayList<>();
+        ArrayList<Integer> ls = new ArrayList<>();
         list.add(10);                  // valid
         // list = new ArrayList<>();   // invalid
+        // list = lt                   // invalid
 
 
         /* 3. Final method → cannot be overridden by a subclass.
