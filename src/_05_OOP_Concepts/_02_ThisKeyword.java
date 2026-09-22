@@ -1,5 +1,8 @@
 package _05_OOP_Concepts;
 
+//this keyword in Java is a reference that refers to the current object of a class
+
+
 // this explicitly refers to the current object's instance members, especially useful when a local variable/parameter has the same name as an instance variable.
 class referToCurrentClassInstanceVariables{
     int a;
@@ -61,6 +64,8 @@ class returnTheCurrentClassInstance{
         System.out.println("Name = " + name + " and Age = " + age);
     }
 }
+
+
 public class _02_ThisKeyword {
     public static void main(String[] args) {
         referToCurrentClassInstanceVariables cciv = new referToCurrentClassInstanceVariables(10, 20);
