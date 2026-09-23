@@ -13,8 +13,8 @@ package _05_OOP_Concepts;
 //Actual object determines:
 //        - which overridden method implementation runs
 
-//Private members are not accessible in subclasses.
-//protected allows subclasses to access a member directly, while private does not.
+//Private members(fields + methods) of parent class are not ACCESSIBLE in subclasses.
+//protected allows subclasses to ACCESS a member(fields + methods) of parent class directly, while private does not.
 
 class Animal{
     String name = "Animal";
@@ -22,9 +22,11 @@ class Animal{
         System.out.println("Makes Sound");
     }
 }
+
 class Dog extends Animal{
     String name = "Dog";                                   // hides Animal's name  // Now Dog has its own name field and also inherits the parent's field.
     String speed = "medium-fast";                          // can add its own field and functionality
+    @Override                                              // I intend this method to override a method inherited from the parent.
     public void sound(){
         System.out.println("Dog Makes barking sound");
     }
@@ -34,6 +36,7 @@ class Dog extends Animal{
 }
 class Cat extends Animal{
     String name = "Cat";                                  // hides Animal's name
+    @Override
     public void sound(){
         System.out.println("Cat Makes meowing sound");
     }
@@ -42,7 +45,7 @@ public class _05_Inheritance {
     public static void main(String[] args) {
         // Animal Reference
         Animal an;
-        an = new Dog();
+        an = new Dog();                      // This is called upcasting: I have a Dog object, but I'm currently treating it as an Animal
         System.out.println(an.name);         // Animal (Fields are resolved based on the reference type)
         an.sound();
 //        System.out.println(an.speed);      // Error as Animal class doesn't have a field named speed -> compilation fails. [fields and methods that can be called are checked using the reference type at compile time.]

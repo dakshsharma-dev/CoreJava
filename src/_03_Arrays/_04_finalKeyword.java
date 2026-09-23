@@ -30,7 +30,7 @@ public class _04_finalKeyword {
         ArrayList<Integer> ls = new ArrayList<>();
         list.add(10);                  // valid
         // list = new ArrayList<>();   // invalid
-        // list = lt                   // invalid
+        // list = ls                   // invalid
 
 
         /* 3. Final method → cannot be overridden by a subclass.
