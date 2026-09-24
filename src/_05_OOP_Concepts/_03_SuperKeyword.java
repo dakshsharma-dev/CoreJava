@@ -72,6 +72,11 @@ public class _03_SuperKeyword {
         sn.showBoth();
 
         Daughter dr = new Daughter(5);
+        // OUTPUT:
+//        Mother constructor
+//        Daughter constructor
+//        parameterized constructor of Daughter
+//        new Daughter(5) → Daughter(int) calls this() → Daughter() automatically calls *****super()***** → Mother() runs first, then control returns to Daughter() and finally Daughter(int).
     }
 }
 
