@@ -1,5 +1,7 @@
 package _05_OOP_Concepts;
 
+// IMPORTANT: ******An abstract method cannot be final because abstract methods must be overridden, whereas final methods cannot be overridden.
+
 abstract class Car{                   // abstract class  // Only an abstract class can declare an abstract method.
     public abstract void drive();     // abstract method // abstract means just idea(here - declaration) not implementation
     public abstract void fly();
