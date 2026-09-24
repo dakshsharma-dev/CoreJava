@@ -39,3 +39,22 @@ public class _07_AbstractKeyword {
 // points to remember:
 //1. A class can be declared abstract even when it does not contain any abstract method. Such a class CAN'T be instantiated directly but can be inherited by other classes.
 
+/*  Why abstract classes exist
+    Suppose every animal should have a sound() method, but the implementation differs.
+
+    abstract class Animal {
+        abstract void sound();
+    }
+
+
+    class Dog extends Animal {
+        void sound() {
+            System.out.println("Bark");
+        }
+    }
+    class Cat extends Animal {
+        void sound() {
+            System.out.println("Meow");
+        }
+    }
+*/
