@@ -83,7 +83,7 @@ public class _05_Inheritance {
         */
   // 4. Multiple Inheritance: A class inheriting from multiple classes.
         // Note: Java does not allow this with classes.
-        // Note: Java supports multiple inheritance through interfaces, not classes.
+        // Note: Java supports multiple inheritance through interfaces, not classes.**********************
         // class C extends A, B {}      // illegal
         // class C implements A, B {}   // legal
 

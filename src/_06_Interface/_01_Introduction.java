@@ -1,18 +1,11 @@
 package _06_Interface;
 
-//is a constract/blueprint that defines a set of methods a class must implement
+//is a contract/blueprint that defines a set of methods a class must implement
+// Use an interface when you need to define a contract for behavior that multiple classes can implement.
 
-
-
-// class     - class         -> extends
 // class     - interface     -> implements
 // interface - interface     -> extends
-
-
-
-
-
-
+// class     - class         -> extends
 
 
 // abstract class tempClass{                          // abstract class with only abstract methods ----------> interface comes into picture
@@ -20,76 +13,79 @@ package _06_Interface;
 //     public abstract void config();
 // }
 
-interface tempClass0{                                 // just gives the design(gives the methods which you have to implement yourself)    // interfaces don't have their own memory in heap
-    int age = 21;                                     // final and static by default(because for interface you can only implement methods in other classes not variables)
+
+interface interface0 {                                // just gives the design(gives the methods which you have to implement yourself)    // interfaces don't have their own memory in heap
+    int age = 21;                                     // Interface variables are implicitly public static final (constants).
     String name = "Daksh";
 
-    void show();                                      // every method in interface is public abstract by default(no need to name them explicitely public abstract though if you do so no error will be thrown)
+    void show();                                      // every method is public abstract by default(no need to name them explicitly public abstract though if you do so no error will be thrown)
     void config();
 }
 
-abstract class tClassA implements tempClass0{         // if you don't define all the methods of interface then you have to make this class abstract
-    public void show(){
-        System.out.println("in show");
+abstract class tClassA implements interface0 {         // if you don't define all the methods of interface then you have to declare the class as abstract
+    public void show() {
+        System.out.println("in show of tclassA");
     }
     // public void config(){
     //     System.out.println("in config");
     // }
 }
 
-class tClassB extends tClassA{
-    public void config(){
-        System.out.println("in config");
+class tClassB extends tClassA {
+    public void config() {
+        System.out.println("in config of tclassB");
     }
 }
 
 
 
 
-
-
-// NEXT to NEXT LECTURE (MULTIPLE INTERFACES)
-interface tempClass1{
+// MULTIPLE INHERITANCE USING INTERFACE
+interface interface1 {
     void run();
 }
-interface tempClass2 extends tempClass1{                    // INHERITENCE in case of interfaces
-    // YOU WILL GET       void run();         HERE TOO AS OBEYING INHERITENCE
+
+interface interface2 extends interface1 {                    // INHERITANCE in case of interfaces
+    // YOU WILL GET       void run();                           HERE TOO AS OBEYING INHERITANCE
 
 }
 
-class tClassC implements tempClass0, tempClass1{            // we can have one class implementing MULTIPLE INTERFACES         **unlike**          ABSTRACT CLASS WHERE ONE CLASS CAN ONLY EXTEND ONE ABSTRACT CLASS
-    public void show(){
-        System.out.println("in show");
+class tClassC implements interface0, interface1 {            // A class can extend only one class (abstract or non-abstract), but can implement multiple interfaces.
+    public void show() {
+        System.out.println("in show of tclassC");
     }
-    public void config(){
-        System.out.println("in config");
+
+    public void config() {
+        System.out.println("in config of tclassC");
     }
-    public void run(){
-        System.out.println("in run");
+
+    public void run() {
+        System.out.println("in run of tclassC");
     }
 }
+
 public class _01_Introduction {
     public static void main(String[] args) {
-        tempClass0 obj;                              // there is no problem in creating a reference of interface
-        // obj = new tempClass();                    // can't instanciate a interface
+        interface0 obj;                              // there is no problem in creating a reference of interface
+        // obj = new interface0();                   // can't create an instance of an interface
 
         obj = new tClassC();
         obj.show();
         obj.config();
-        // obj.run();                               // .run() is undefined for tempClass0 which is the REFERENCE
+        // obj.run();                               // .run() is undefined for interface0 which is the REFERENCE[& reference decides which variables and methods can be accessed]
 
-        tempClass1 obj1 = new tClassC();
-        obj1.run();                                 // .run() is defined for tempClass1 which is the REFERENCE here
-
+        // to implement all 3 methods at once, create the reference itself of type tClassC ,but we created reference of interface0 so that it can be later assigned to some other class implementing interface0 without creating a new reference -> concept of loose coupling & when reference is of type tClassC -> tight coupling
 
 
-        // tempClass2 obj2 = new tClassC();         // will give error as tClassC doesn't implement tempClass2          instead       tClassC only implements tempClass0, tempClass1
+        interface1 obj1 = new tClassC();
+        obj1.run();                                 // .run() is defined for interface1 which is the REFERENCE here
 
 
+        // interface2 obj2 = new tClassC();         // will give error as tClassC doesn't implement interface2          instead       tClassC only implements interface0, interface1
 
 
-        System.out.println(tempClass0.age);         // can call directly as these are static variable
-        System.out.println(tempClass0.name);
-        // tempClass0.name = "Sneha";               // final field can't be updated
+        System.out.println("Age of interface0: " + interface0.age);         // can call directly as these are static variable
+        System.out.println("Name of interface0: " + interface0.name);
+        // interface0.name = "Sneha";               // final field can't be updated
     }
 }

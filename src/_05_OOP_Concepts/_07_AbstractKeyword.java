@@ -24,7 +24,7 @@ class RollsRoyce extends BMW{          // concrete class // A concrete subclass 
 }
 
 
-// IMPORTANT NOTE: 1 abstract class can only extend 1 abstract class
+// IMPORTANT NOTE: 1 class can extend only 1 class(abstract or non-abstract)
 
 public class _07_AbstractKeyword {
     public static void main(String[] args) {
