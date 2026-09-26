@@ -7,6 +7,11 @@ package _06_Interface;
 // interface - interface     -> extends
 // class     - class         -> extends
 
+// IMPORTANT
+//Class → extends → one class
+//Class → implements → multiple interfaces
+//Interface → extends → multiple interfaces
+
 
 // abstract class tempClass{                          // abstract class with only abstract methods ----------> interface comes into picture
 //     public abstract void show();
