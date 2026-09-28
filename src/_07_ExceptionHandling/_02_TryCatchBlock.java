@@ -18,7 +18,7 @@ public class _02_TryCatchBlock {
         catch(Exception e){                                      // compiler will give an error if a broader exception comes first.
             System.out.println("Exception caught: " + e);
         }
-        finally{
+        finally{                                                 // Used for cleanup tasks such as closing files or database connections.
             System.out.println("I am finally block. I will always execute whether an Exception occurs or not.");
         }
 
@@ -37,7 +37,12 @@ public class _02_TryCatchBlock {
     e                   = reference to the actual exception object
 
 
-    NOTE: A try block must be followed by at least one catch block or a finally block
+    NOTE: 1. A try block must be followed by at least one catch block or a finally block(try block can't exists alone)
+            try, catch, and finally cannot exist as standalone blocks.
+            valid combinations:
+            try + catch
+            try + finally
+            try + catch + finally
 
     INTERNAL WORKING OF TRY-CATCH BLOCK:
     1. Java Virtual Machine starts executing the code inside the try block.
