@@ -1,12 +1,12 @@
 package _07_ExceptionHandling;
 
-public class _02_TryCatchBlock {
+public class _02_TryCatchFinallyBlock {
     public static void main(String[] args) {
         try{
             int res = 10 / 0; // Java encounters the problem and creates/throws an ArithmeticException OBJECT.
             // normal execution of the try block stops immediately. **The program does not continue to any remaining statements inside try.**
 
-            String name = null;
+            String name = null;                                  // unreachable statement
             System.out.println(name.length());
         }
         catch(NullPointerException e){                           // More specific exceptions must come before broader ones:
