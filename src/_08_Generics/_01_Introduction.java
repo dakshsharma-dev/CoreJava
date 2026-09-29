@@ -6,6 +6,7 @@ package _08_Generics;
     //Type safety
     //Avoiding unnecessary casting
 
+
 // Without Generics
 // Java's old ArrayList stores objects without specifying a type:
 // ArrayList list = new ArrayList();
@@ -72,6 +73,16 @@ class AnotherBox<T>{            // here 'T' is a type parameter
 }
 
 public class _01_Introduction {
+    // 3. Generic Methods: method that introduces its own type parameter, independent of whether the class itself is generic.
+
+    static <T> void display(T value){  // type parameter comes just before returnType
+        System.out.println(value);
+    }
+
+    static <T> T show(T value){       // returnType T
+        return value;
+    }
+
     public static void main(String[] args) {
         // Without Generics
         Box box = new Box("Daksh");
@@ -81,8 +92,8 @@ public class _01_Introduction {
         System.out.println(box1.getValue());
 
 //        problem appears when you want to use the value as a specific type:
-        String name = (String) box.getValue();   // OK
-        String s = (String) box1.getValue();     // Runtime ClassCastException
+//        String name = (String) box.getValue();   // OK
+//        String s = (String) box1.getValue();     // Runtime ClassCastException
 
 
         // With Generics
@@ -94,5 +105,15 @@ public class _01_Introduction {
 
 //        Generics prevent such mistakes at compile time:
 //        String s1 = abox1.getValue();  // Compile-time error
+
+
+        // Generic Methods: same method works for different types.
+        display("Aryan");
+        display(3);
+        display(3.1343);
+
+        System.out.println(show("Asha"));
+        System.out.println(show(1));
+
     }
 }
