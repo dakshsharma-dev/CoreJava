@@ -41,9 +41,11 @@ package _08_Generics;
 
 // 2. Generic Classes
 //class that can work with different data types, where the type is specified when creating the object.
-//Declared with a type parameter (e.g., <T>) after the class name.
-//Multiple type parameters can be used (e.g., <T, U>). // Example: Pair<K, V>, Map<K, V>
-//Type parameters must be reference types (not primitives like int, float, etc.).
+//Declared with a TYPE PARAMETER (e.g., <T>) after the class name.
+//Multiple TYPE PARAMETERS can be used (e.g., <T, U>). // Example: Pair<K, V>, Map<K, V>
+//TYPE PARAMETERS must be reference types (not primitives like int, float, etc.).
+
+// NOTE: TYPE PARAMETER, is a very important term in Generics.
 
 
 // Without Generics
@@ -60,14 +62,14 @@ class Box{
 }
 
 // With Generics
-class AnotherBox<T>{            // here 'T' is a type parameter
+class AnotherBox<T>{            // here 'T' is a TYPE PARAMETER
     T value;
 
     AnotherBox(T value){
         this.value = value;
     }
 
-    T getValue(){
+    T getValue(){               // concrete method with returnType T
         return value;
     }
 }
@@ -75,11 +77,11 @@ class AnotherBox<T>{            // here 'T' is a type parameter
 public class _01_GenericClassesAndMethods {
     // 3. Generic Methods: method that introduces its own type parameter, independent of whether the class itself is generic.
 
-    static <T> void display(T value){  // type parameter comes just before returnType
+    static <T> void display(T value){  // TYPE PARAMETER is mandatory just before returnType
         System.out.println(value);
     }
 
-    static <T> T show(T value){       // returnType T
+    static <T> T show(T value){        // returnType T // TYPE PARAMETER is mandatory just before returnType
         return value;
     }
 
