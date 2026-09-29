@@ -2,7 +2,7 @@ package _08_Generics;
 
 //Generics allow us to write reusable code that works with different types while providing compile-time type safety.
 
-// 1. Why Generics exists?
+// 1. Why Generics exists?***************************
     //Type safety
     //Avoiding unnecessary casting
 
