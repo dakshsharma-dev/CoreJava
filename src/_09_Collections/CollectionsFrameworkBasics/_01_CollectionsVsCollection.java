@@ -1,6 +1,6 @@
 package _09_Collections.CollectionsFrameworkBasics;
 
-/*
+/*  Collections vs Collection
     1. Collection is an interface.
 
     Collection<Integer> c = new ArrayList<>();
@@ -15,6 +15,24 @@ package _09_Collections.CollectionsFrameworkBasics;
     // Note: You can't do new Collection<>(); as we can't create objects of interface
     // Note: Map does NOT extend Collection. Map is a separate hierarchy
 
+*/
+
+/*  Iterable
+    root interface of the Collections Framework.
+
+    Iterable
+       ↑
+    Collection
+       ↑
+    List, Set, Queue
+
+    Purpose: If a class implements Iterable, Java can loop through its elements.
+    enhanced for-each loop works because classes like ArrayList, HashSet ultimately implement Iterable.
+
+
+    NOTE: for (int x : list)
+    1. is not special syntax only for collections, it works on anything that implements Iterable (and arrays).
+    2. Java is internally using an Iterator obtained from list.iterator()
 */
 
 
