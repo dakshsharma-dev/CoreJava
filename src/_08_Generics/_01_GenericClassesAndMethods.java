@@ -72,7 +72,7 @@ class AnotherBox<T>{            // here 'T' is a type parameter
     }
 }
 
-public class _01_Introduction {
+public class _01_GenericClassesAndMethods {
     // 3. Generic Methods: method that introduces its own type parameter, independent of whether the class itself is generic.
 
     static <T> void display(T value){  // type parameter comes just before returnType
