@@ -36,7 +36,7 @@ package _09_Collections.CollectionsFrameworkBasics;
 */
 
 
-public class _01_CollectionsVsCollection {
+public class _01_CollectionsVsCollectionAnd_Iterable {
     public static void main(String[] args) {
 
     }
