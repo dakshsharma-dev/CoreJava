@@ -37,6 +37,23 @@ import java.util.List;
 // Occasionally O(n) when internal array needs resizing.
 
 
+// 5.
+//Java                 C++(STL)
+//--------------------------------
+//add(x)               push_back(x)
+//add(i, x)            insert(iterator)
+//get(i)               v[i]
+//set(i, x)            v[i] = x
+//remove(index/object) erase(iterator)
+//contains(x)          find(iterator)
+
+
+// 6.
+//Ordered
+//Indexed
+//Allows duplicates
+
+
 public class _01_ArrayList {
     public static void main(String[] args) {
         List<Integer> list = new ArrayList<>();
@@ -45,6 +62,7 @@ public class _01_ArrayList {
         list.add(10);
         list.add(20);
         list.add(30);
+        list.add(3, 45); // similar to v.insert(v.begin() + 2, 32) in C++
 
         // printing elements
         System.out.println(list);  // [10, 20, 30]    // equivalent to     System.out.println(list.toString());
