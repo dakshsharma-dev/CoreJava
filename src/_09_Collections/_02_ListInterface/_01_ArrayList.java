@@ -13,7 +13,7 @@ import java.util.List;
 
 
 // 2.
-// ArrayList allows null values.
+// ArrayList allows multiple null values.
 
 
 // 3.
