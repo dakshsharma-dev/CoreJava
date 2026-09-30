@@ -37,7 +37,15 @@ public class _01_HashMapAndLinkedHashMap {
 
 
         System.out.println(mp.get(1));          // Shreya
-        System.out.println(mp.remove(1));  // Shreya // remove also return the value which is removed
+        // if key doesn't exist: returns null
+        // NOTE:
+//        null can mean either:
+//        key doesn't exist
+//        OR
+//        key exists and its value is null  -> mp.containsKey(key) comes into picture, specifically for checking whether a key exists or not
+
+
+        System.out.println(mp.remove(1));  // Shreya // also return the value which is removed
 
         System.out.println(mp.containsKey(1));  // false
         System.out.println(mp.containsValue("Daksh")); // true
@@ -45,8 +53,6 @@ public class _01_HashMapAndLinkedHashMap {
         System.out.println(mp.size());      // 1
         System.out.println(mp.isEmpty());   // false
         mp.clear();
-
-
 
     }
 }
