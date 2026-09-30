@@ -6,15 +6,32 @@ import java.util.List;
 // resizable array.
 // Internally, it uses an array.
 // ArrayList -> Object[]
-
 // int[]               -> contiguous int values
 // Integer[]           -> contiguous references
 // ArrayList<Integer>  -> internally Object[] of contiguous references, actual Integer objects are elsewhere on the heap.
 
+
+// ArrayList allows null values.
+
+
+// How get(i) is O(1)
+//ArrayList internally stores elements in a contiguous array.
+//So to access index i, Java can directly calculate: base_address + (i × element_size)
+//and jump to that position immediately.
+
+
+// size & capacity
+//size     = actual number of elements
+//capacity = internal array's available space
+//
+//When capacity is insufficient:
+//→ larger array
+//→ copy references
+//→ continue
+//
 // add(element) -> amortized O(1)
 // Occasionally O(n) when internal array needs resizing.
 
-// ArrayList allows null values.
 
 public class _01_ArrayList {
     public static void main(String[] args) {
