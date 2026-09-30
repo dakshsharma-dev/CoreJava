@@ -1,4 +1,4 @@
-package _09_Collections.CollectionsFrameworkBasics;
+package _09_Collections._01_CollectionsFrameworkBasics;
 
 /*  Collections vs Collection
     1. Collection is an interface.

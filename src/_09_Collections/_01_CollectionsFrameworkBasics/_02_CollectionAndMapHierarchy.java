@@ -1,4 +1,4 @@
-package _09_Collections.CollectionsFrameworkBasics;
+package _09_Collections._01_CollectionsFrameworkBasics;
 
 /*  I -> interface, C -> class, L -> legacy class
     [I] Iterable
