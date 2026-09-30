@@ -27,6 +27,9 @@ package _09_Collections._03_SetInterface;
     lower/floor     -> LARGEST  & less
     higher/ceiling  -> SMALLEST & greater
 
+    3.
+    No null values are allowed
+
 */
 public class _03_TreeSet {
     public static void main(String[] args) {
