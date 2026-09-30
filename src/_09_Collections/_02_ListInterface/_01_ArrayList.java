@@ -3,6 +3,7 @@ package _09_Collections._02_ListInterface;
 import java.util.ArrayList;
 import java.util.List;
 
+// 1.
 // resizable array.
 // Internally, it uses an array.
 // ArrayList -> Object[]
@@ -11,15 +12,18 @@ import java.util.List;
 // ArrayList<Integer>  -> internally Object[] of contiguous references, actual Integer objects are elsewhere on the heap.
 
 
+// 2.
 // ArrayList allows null values.
 
 
+// 3.
 // How get(i) is O(1)
 //ArrayList internally stores elements in a contiguous array.
 //So to access index i, Java can directly calculate: base_address + (i × element_size)
 //and jump to that position immediately.
 
 
+// 4.
 // size & capacity
 //size     = actual number of elements
 //capacity = internal array's available space
