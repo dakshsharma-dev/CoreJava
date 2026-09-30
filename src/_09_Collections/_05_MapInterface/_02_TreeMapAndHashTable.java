@@ -28,9 +28,17 @@ package _09_Collections._05_MapInterface;
     floorKey(x)              → O(log n)  // largest key <= x
     ceilingKey(x)            → O(log n)  // smallest key >= x
 
+
+
+
+    3. HashTable
+       legacy, synchronized(thread-safe)
+       HashMap-like Map that doesn't allow nulls keys and null values
+
+
  */
 
-public class _02_TreeMap {
+public class _02_TreeMapAndHashTable {
     public static void main(String[] args) {
 
     }
