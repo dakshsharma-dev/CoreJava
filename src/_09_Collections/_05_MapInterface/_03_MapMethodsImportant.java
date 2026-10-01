@@ -75,14 +75,10 @@ public class _03_MapMethodsImportant {
             Important pitfall
 
             null can mean either:
+            key doesn't exist
+                   OR
+            key exists and its value is null   -> mp.containsKey(key) comes into picture specifically for checking whether the key exists or not.
 
-                key doesn't exist
-                        OR
-                key exists and its value is null
-
-            So when this distinction matters:
-
-                mp.containsKey(key)
         */
 
 
@@ -95,11 +91,7 @@ public class _03_MapMethodsImportant {
         /*
             Checks whether a key exists.
 
-            Returns:
-
-                true / false
-
-            Very commonly used.
+            Returns: true / false
         */
 
         if (mp.containsKey(10)) {
@@ -120,8 +112,7 @@ public class _03_MapMethodsImportant {
 
                 mp.containsValue("Alice");
 
-            Usually less useful in DSA because it requires
-            searching through the values.
+            Usually less useful in DSA because it requires searching through the values.
         */
 
         boolean exists = mp.containsValue("Alice");
@@ -161,7 +152,7 @@ public class _03_MapMethodsImportant {
             Meaning:
 
                 Give me the value for this key;
-                if the key doesn't exist, give me the default value.
+                if the key doesn't exist, give me the default value(which is given by me in the method)
         */
 
         Map<Integer, Integer> freq = new HashMap<>();
@@ -277,6 +268,9 @@ public class _03_MapMethodsImportant {
         Map<Integer, List<Integer>> group = new HashMap<>();
 
         group.computeIfAbsent(5, k -> new ArrayList<>()).add(10);
+        /*
+            mp.computeIfAbsent(1, k -> new ArrayList<>()) effectively returns List<Integer> & we're calling add() on that returned list:
+         */
 
         /*
             If key 5 doesn't exist:
@@ -358,16 +352,28 @@ public class _03_MapMethodsImportant {
 
 
         /*
-            keySet()
-
-            Gives a Set view of the keys.
+            keySet(): Gives a Set view of the keys.
         */
 
-        Set<Integer> keys = names.keySet();
-
+        Set<Integer> keys = names.keySet(); // {1, 2}
         /*
-            {1, 2}
+            Set<Integer> st = mpp.keySet();
+
+            Why does this work?
+            Set is an interface, but keySet() returns an actual object (created/maintained internally by the Map)
+            whose class implements Set.********************************************
+
+            We are not creating a new object here; we are simply storing the reference returned by keySet().
+
+            Similar to:
+            List<Integer> list = new ArrayList<>();
+
+            General idea:
+            Interface reference = object reference
+
+            A method can return an object, and that object reference can be stored in an interface variable.
         */
+
 
 
         /*
@@ -375,7 +381,7 @@ public class _03_MapMethodsImportant {
 
             Gives a Collection of values.
 
-            It is a Collection, not a Set,
+            It is a Collection, not a Set,******************
             because values can repeat.
         */
 
@@ -387,26 +393,63 @@ public class _03_MapMethodsImportant {
 
 
         /*
-            entrySet()
-
-            Each Entry represents:
-
-                key + value
+            entrySet(): Each Entry represents: key + value
         */
 
         Set<Map.Entry<Integer, String>> entries = names.entrySet();
+        /*
+            entrySet() doesn't return a Set<Map<Integer,String>>; it returns a Set of key-value pair objects, i.e. Set<Map.Entry<Integer,String>>.
 
+            So:
+
+            Set<Map<Integer, String>>   // valid Java type, but wrong for entrySet()
+            Set<Map.Entry<Integer,String>> // correct
+
+            Why? A Map is a collection of key-value mappings; an ****INDIVIDUAL MAPPING IS REPRESENTED BY MAP.ENTRY.****
+        */
 
         /*
             This is the preferred way to iterate
             over both keys and values.
         */
 
+        // **IMPORTANT**
         for (Map.Entry<Integer, String> entry : names.entrySet()) {
             System.out.println(
-                    entry.getKey() + " " + entry.getValue()
+                    entry.getKey() + " " + entry.getValue()                     // getKey() and getValue() are methods, majorly used when iterating over mappings.
             );
         }
+
+//        C++ equivalent
+//        for (auto& [key, value] : mp) {
+//            cout << key << " " << value;
+//        }
+
+        // Iterate over keys
+        for(Integer key : names.keySet()){
+            System.out.println("key: " + key);
+        }
+
+        // Iterate over values
+        for(String val: names.values()){
+            System.out.println("value: " + val);
+        }
+
+        /*
+            keySet(), values(), and entrySet() return views backed by the Map,
+            NOT independent copies.
+
+            Example:
+                Set<Integer> keys = mpp.keySet();
+
+                mpp.put(5, 50);
+                System.out.println(keys);
+
+                Output:
+                [1, 2, 3, 4, 5]
+
+            So, changes in the Map are automatically reflected in these views.
+        */
 
 
         /*
@@ -556,11 +599,23 @@ public class _03_MapMethodsImportant {
 
         /*
         ============================================================
-        One important mental model
+        One important mental model*****************************************************(VERY IMPORTANT NOTE)
         ============================================================
 
-            keySet(), values(), and entrySet() are views
-            backed by the Map, not independent copies.
+            keySet(), values(), and entrySet() are views backed by the Map, not independent copies.
+
+            Example:
+                Set<Integer> keys = mpp.keySet();
+
+                mpp.put(5, 50);
+                System.out.println(keys);
+
+                Output:
+                [1, 2, 3, 4, 5]
+
+            So, changes in the Map are automatically reflected in these views.
+
+
 
             That's why you can think of:
 
