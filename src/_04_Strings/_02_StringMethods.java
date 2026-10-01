@@ -50,6 +50,7 @@ public class _02_StringMethods {
         String s3 = "Daksh";
         System.out.println(s3.equalsIgnoreCase("daksh"));
 
+//        Very Important Method(specially for Comparator)
 //        7. int compareTo(String s)             // compares two string lexicographically.
         System.out.println(s3.compareTo("daksh"));
         /*
