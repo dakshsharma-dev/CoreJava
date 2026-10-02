@@ -1,15 +1,33 @@
 package _09_Collections._07_ComparableAndComparator;
 
 /*
-    Comparator is an object whose job is: Tell Java how two objects should be compared.
+    1.
+    Comparator OR Comparable's job is: Tell Java how two objects should be compared.
 
+
+    2.
     VERY IMPORTANT POINT:********************************************
 
-    actual rule of Comparator.compare(o1, o2) is simply:
-    compare(o1, o2)
+    actual rule of Comparator.compare(o1, o2):
     negative → o1 comes BEFORE o2
     0        → o1 and o2 are considered equal in ordering
     positive → o1 comes AFTER o2
+
+    actual rule of Comparable.compareTo(other):
+    negative → this comes BEFORE other
+    0        → this and other are considered equal in ordering
+    positive → this comes AFTER other
+
+
+    3.
+    Comparator: An external/custom ordering        &  logic: Outside the class   & Collections.sort(list, comparator);
+    Comparable: Object's natural/default ordering  &  logic: Inside the class    & Collections.sort(list);
+
+
+    4.
+    Note: Comparator has method compare(o1, o2)  because as the name suggests it has to compare two objects -> happens outside the class -> Comparator
+
+          Comparable has method compareTo(other) because as the name suggests it compares one object with other object -> happens inside the class -> Comparable
 
 */
 
@@ -18,7 +36,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-class Student{
+class Student implements Comparable<Student>{
     String name;
     int id;
     int age;
@@ -32,13 +50,27 @@ class Student{
     }
 
     @Override
+    public int compareTo(Student other) {
+        // Ascending order
+//        if(this.id < other.id) return -1;
+//        else if(this.id > other.id) return 1;
+//        else return 0;
+
+        // Descending Order
+        if(this.id < other.id) return 1;
+        else if(this.id > other.id) return -1;
+        else return 0;
+
+    }
+
+    @Override
     public String toString() {
         return "Student{Name: " + name + ", id: " + id + ", age: " + age + ", marks: " + marks + "}";
     }
     // Override toString() so Student objects are displayed with their actual field values
     // instead of Object's default ClassName@hashCode representation.
 }
-public class _01_Comparator {
+public class _01_ComparatorAndComparable {
     public static void main(String[] args) {
         List<Student> list = new ArrayList<>();
         list.add(new Student("Daksh", 1, 21, 99.86));
@@ -47,6 +79,7 @@ public class _01_Comparator {
         list.add(new Student("Shreya", 4, 21,  99.86));
 
 
+        // Comparator is a @FunctionalInterface
         Comparator<Student> byAge = new Comparator<Student>() {
             @Override
             public int compare(Student o1, Student o2) {
@@ -92,6 +125,8 @@ public class _01_Comparator {
                 // return Integer.compare(o2.age, o1.age);  // descending order
             }
         };
+
+
         Comparator<Student> byName = new Comparator<Student>() {
             @Override
             public int compare(Student o1, Student o2) {
@@ -108,6 +143,8 @@ public class _01_Comparator {
                 // shorted version: return o2.name.compareTo(o1.name);
             }
         };
+
+
         Comparator<Student> byNameLength = new Comparator<Student>() {
             @Override
             public int compare(Student o1, Student o2) {
@@ -115,6 +152,8 @@ public class _01_Comparator {
                 //return Integer.compare(o2.name.length(), o1.name.length()); // descending order
             }
         };
+
+
         Comparator<Student> byId = new Comparator<Student>() {
             @Override
             public int compare(Student o1, Student o2) {
@@ -122,6 +161,8 @@ public class _01_Comparator {
                 //return Integer.compare(o2.id, o1.id); // descending order
             }
         };
+
+
         Comparator<Student> byMarks = new Comparator<Student>() {
             @Override
             public int compare(Student o1, Student o2) {
@@ -144,6 +185,11 @@ public class _01_Comparator {
                 //return Double.compare(o2.marks, o1.marks); // descending order
             }
         };
+
+        System.out.println("Natural Ordering: ");
+        Collections.sort(list);
+        System.out.println(list);
+
 
         System.out.println("Sort byAge");
         Collections.sort(list, byAge);
