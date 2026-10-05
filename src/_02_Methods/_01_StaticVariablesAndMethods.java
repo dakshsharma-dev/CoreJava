@@ -2,16 +2,17 @@ package _02_Methods;
 
 /*
     Instance members -> belong to objects
-    Static members   -> belong to the class and are shared by all objects & Memory is allocated only once when the class is loaded
+    Static members   -> belong to the **CLASS** and are **SHARED BY ALL OBJECTS** -> Therefore, static methods don't participate in runtime polymorphism & Memory is allocated only once when the class is loaded
 
-    Static methods can directly access only static members. & static methods can't use this or super keywords.[because a static method has no object]
+    Static methods can DIRECTLY access only static members. & static methods can't use this or super keywords.[because a static method has no object]
     Instance methods can access both instance and static members.
 */
 class Mobile{
+    // instance variables
     String brand;
     int price;
-    // above variables are called instance variables
-    static String name;  // belongs to the class and is shared by all objects
+    // static variable
+    static String name;
 
 
     public void show(){  // instance method
@@ -23,9 +24,7 @@ class Mobile{
     public static void show1(){
         System.out.println("In static method");
         // System.out.println(brand + ": " + price + ": " + name); // can use static variable inside a static method but not instance variable
-
         // because brand and price are diff for diff objects so show1() won't know which one are you referring to
-
         // so **DIRECT** access of non-static variables is not allowed in static methods {for indirect access just pass the object to which you are referring}
         // static methods can't use this or super keywords
     }
@@ -38,9 +37,64 @@ class Mobile{
 }
 
 
-public class _01_StaticVariablesAndMethods {
-    public static void main(String[] args){   // main() is static so the JVM can call it without creating an object
 
+
+// inheritance of static methods in CLASS
+class A {
+    static void show() {
+        System.out.println("in A show");
+    }
+}
+class B extends A {
+    // @Override  // static methods are inherited but can't be overridden
+    static void show() {                  // hides the parent's method not override
+        System.out.println("in B show");
+    }
+    // Override → child replaces parent's instance method behavior at runtime.
+    // Hide → child creates its own static method -> meaning: **CHILD HAS ITS OWN STATIC METHOD & PARENT HAS ITS OWN STATIC METHOD**(its just a coincidence that they both have the same name and signature)
+}
+class C extends A{
+
+}
+
+
+
+
+
+// Inheritance of static methods in INTERFACE
+interface MyInterface{
+    // static void show();                  // Error, as static methods has to have some body interface
+    static void show(){
+        System.out.println("in MyInterface show");
+    }
+}
+interface MyInterface2 extends MyInterface{
+    // Java treats interface static methods as belonging specifically to that interface, not as methods that gets passed down to its subinterfaces/implementing classes.
+    // doesn't inherit static methods of parent, but we can DEFINE same signature using its own implementation
+    static void show(){
+        System.out.println("in MyInterface2 show");
+    }
+}
+class MyInterfaceImplementation implements MyInterface{
+    // doesn't inherit static methods of parent but can DEFINE same signature method using its own implementation
+    static void show(){
+        System.out.println("in MyInterfaceImplementation show");
+    }
+}
+
+/*
+    1. Class inheritance:
+       - static methods are inherited
+       - static methods are hidden, not overridden
+    2. Interface inheritance:
+       - static methods are NOT inherited by subinterfaces
+       - static methods are NOT inherited by implementing classes
+       - therefore interface static methods are neither hidden nor overridden
+*/
+
+
+public class _01_StaticVariablesAndMethods {
+    public static void main(String[] args){   // main() is static so the JVM can call it without creating an object of _01_StaticVariablesAndMethods
         Mobile obj1 = new Mobile();
         obj1.brand = "Apple";
         obj1.price = 1500;
@@ -52,10 +106,7 @@ public class _01_StaticVariablesAndMethods {
         obj2.brand = "Samsung";
         obj2.price = 1500;
         Mobile.name = "SmartPhone" ;
-
-        Mobile.name = "Phone"; // this will make obj1.name = "Phone" as well as obj2.name = "Phone" also as name is a static variable in class Mobile & *****static variable is shared by all the objects*****
-
-
+        Mobile.name = "Phone";          // just an idea: this will make obj1.name = "Phone" as well as obj2.name = "Phone" also as name is a static variable in class Mobile & *****static variable is shared by all the objects*****
 
         obj1.show();         // instance methods are called through objects
         obj2.show();
@@ -63,78 +114,31 @@ public class _01_StaticVariablesAndMethods {
         // Mobile.show();   // can't make a static reference to a nonstatic method
         Mobile.show1();     // static method {direct access of instance variable denied}
         Mobile.show1(obj1); // static method {indirect access of instance variables}
+
+
+
+
+        // INHERITANCE OF STATIC METHODS in CLASSES
+        System.out.println("Inheritance(static methods): ");
+
+        A.show();            // in A show
+        B.show();            // in B show  // B.show() hides A.show() when you access the method through class B.
+        C.show();            // in A show  // static methods are inherited in classes
+
+
+        // Static methods are resolved using the reference type.[*********Because static methods are associated with the class, not the object.*********]
+        // That's why the preferred way of calling static methods is via className not object
+        // Instance methods are resolved using the actual object type.
+        A Aobj = new B();
+        Aobj.show();         // in A show
+
+
+
+
+        // Inheritance of static methods in INTERFACE
+        MyInterface.show();
+        MyInterface2.show();                                   // interface static methods are not inherited in sub-interface
+        MyInterfaceImplementation.show();                      // interface static methods are not inherited in implementing class
     }
 }
-
-/*  INHERITANCE IN CLASSES
-    LEARNING: Static methods are not overridden; they are hidden.
-
-    class A {
-        static void show() {
-            System.out.println("A");
-        }
-    }
-
-    class B extends A {
-        static void show() {
-            System.out.println("B");
-        }
-    }
-
-    A obj = new B();
-    obj.show();   // Output: A
-
-    Why?
-    - Instance methods are resolved using the actual object type.
-    - Static methods are resolved using the reference type.[*********Because static methods are associated with the class, not the object.*********]
-    That's why the preferred way of calling static methods is via className not object
-
-    Therefore:
-    - Static methods do not participate in runtime polymorphism.
-    - If a subclass defines a static method with the same signature, it hides the parent's method rather than overriding it.
-
-    So:
-        A.show();  // A
-        B.show();  // B  // B.show() hides A.show() when you access the method through class B.
-
-    Both methods exist independently.
-
-
-    INSTANCE METHOD
-            ↓
-    belongs to object
-            ↓
-    runtime object matters
-            ↓
-    overriding
-            ↓
-    runtime polymorphism
-
-
-    STATIC METHOD
-            ↓
-    belongs to class
-            ↓
-    class/reference type matters
-            ↓
-    hiding
-            ↓
-    no runtime polymorphism
-
-
-    Override → child replaces parent's instance method behavior at runtime.
-    Hide → child creates its own static method; parent's static method still exists separately.
-*/
-
-
-/*  INHERITANCE IN INTERFACE
-    Look file lambdaExpressionsAndFunctionalInterface
-
-
-    CONCLUSION:
-    Class static method → inherited by child → can be hidden.
-    Interface static method → not inherited by subinterfaces or implementing classes.
-    Static methods → not method overriding but method hiding
-    Instance methods → belong to objects → can be overridden.
-*/
 

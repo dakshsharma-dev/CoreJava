@@ -46,6 +46,7 @@ package _10_Java8;
 interface MyInterface{
     void sayHello();
 
+    // default methods are concrete methods in interface, default is not package-private modifier, both are different things: no-modifier and default method in interface
     default void hii(){
         System.out.println("Hii!!");
     }
@@ -60,6 +61,16 @@ interface MyInterface{
 @FunctionalInterface
 interface Child extends MyInterface{         // this too is a functional interface
     void sayHello(); // it's upto us we can redefine it or not
+
+
+    default void hii(){           // default methods are ONLY FOR INTERFACES, it is not the same as package-private access
+        System.out.println("Hii from Child interface");
+    }
+
+    // @Override // static methods can't be overridden
+    static void hey(){                        // Same name, same signature as parent but no overriding, no hiding, no inheritance relationship. They just happen to have the same name(they are independent methods)
+        System.out.println("Hey from child interface");
+    }
 }
 
 class Class1 implements MyInterface{
@@ -68,6 +79,8 @@ class Class1 implements MyInterface{
     }
     // Interface methods are implicitly public abstract.
     // Therefore, the implementing method must also be public.
+
+
 }
 
 public class _02_lambdaExpressionsAndFunctionalInterface {
@@ -94,9 +107,7 @@ public class _02_lambdaExpressionsAndFunctionalInterface {
         Child ch = () -> System.out.println("Hello from Child");
         ch.sayHello();
         ch.hii();
-
-
-        // Child.hey(); // Unlike Class, Interface static methods are not inherited by subinterfaces.
+        Child.hey(); // Unlike Class, Interface static methods are not inherited by subinterfaces.
                                    // &  class implementing interface doesn't inherit static methods either.
         Class1 c1 = new Class1();
         c1.sayHello();
@@ -104,5 +115,34 @@ public class _02_lambdaExpressionsAndFunctionalInterface {
 
         // MOST IMPORTANT POINT TO REMEMBER: Java wants a static method to belong to the interface itself, not to objects, sub-interfaces and not to implementing classes.
 
+
+
+
+        // STATIC KEYWORD - FINAL CONCLUSION
+
+        // 1. Static members belong to the class/interface itself, not to objects.
+
+        // 2. Static methods:
+        //    - can be called using ClassName.method()
+        //    - directly access only static members
+        //    - cannot use this or super
+        //    - do not participate in runtime polymorphism
+
+        // 3. Instance methods:
+        //    - belong to objects
+        //    - can access both instance and static members
+        //    - can be overridden
+
+        // 4. Class inheritance:
+        //    - static methods are inherited
+        //    - static methods are hidden, not overridden
+
+        // 5. Interface inheritance:
+        //    - static methods are NOT inherited by subinterfaces
+        //    - static methods are NOT inherited by implementing classes
+        //    - therefore interface static methods are neither hidden nor overridden
+
+        // 6. Default interface methods are instance methods.
+        //    They are inherited and can be overridden.
     }
 }

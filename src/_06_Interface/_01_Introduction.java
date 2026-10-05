@@ -37,6 +37,7 @@ abstract class tClassA implements interface0 {         // if you don't define al
 }
 
 class tClassB extends tClassA {
+    // since methods of interface are public abstract by default, therefore, in implementing class methods should also be public.
     public void config() {
         System.out.println("in config of tclassB");
     }
