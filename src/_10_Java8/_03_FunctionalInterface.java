@@ -1,7 +1,7 @@
 package _10_Java8;
 
 /*
-    1. Inheritance in Functional Interface
+    1. Inheritance in Interface
 
     @FunctinalInterface      // restricts the interface to be a functional interface -> will throw compile-time error if try to add another abstract method
     interface A{
@@ -43,7 +43,7 @@ package _10_Java8;
 
 
     3.
-    Java8 introduced: concrete methods(static and default)
+    Java8 introduced: concrete methods(static and default) in ****interface not just Functional Interface****
 
 
     4.
@@ -52,7 +52,7 @@ package _10_Java8;
 
 
     5.
-    There is no restriction on the NUMBER OF default or static methods.
+    There is no restriction on the NUMBER OF default or static methods in interface
 
 */
 
