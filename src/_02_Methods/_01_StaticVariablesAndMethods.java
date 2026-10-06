@@ -49,7 +49,7 @@ class B extends A {
     // @Override  // static methods are inherited but can't be overridden
     static void show() {                  // hides the parent's method not override
         System.out.println("in B show");
-    }
+    }           // This is method hiding
     // Override → child replaces parent's instance method behavior at runtime.
     // Hide → child creates its own static method -> meaning: **CHILD HAS ITS OWN STATIC METHOD & PARENT HAS ITS OWN STATIC METHOD**(its just a coincidence that they both have the same name and signature)
 }
@@ -63,7 +63,7 @@ class C extends A{
 
 // Inheritance of static methods in INTERFACE
 interface MyInterface{
-    // static void show();                  // Error, as static methods has to have some body interface
+    // static void show();                  // Error, as static methods has to have some body in interface
     static void show(){
         System.out.println("in MyInterface show");
     }
@@ -71,12 +71,12 @@ interface MyInterface{
 interface MyInterface2 extends MyInterface{
     // Java treats interface static methods as belonging specifically to that interface, not as methods that gets passed down to its subinterfaces/implementing classes.
     // doesn't inherit static methods of parent, but we can DEFINE same signature using its own implementation
-    static void show(){
-        System.out.println("in MyInterface2 show");
-    }
+
+    // This is MyInterface2's own static method not inherited from MyInterface
+    static void show(){ System.out.println("in MyInterface2 show");}
 }
 class MyInterfaceImplementation implements MyInterface{
-    // doesn't inherit static methods of parent but can DEFINE same signature method using its own implementation
+    // class doesn't inherit static methods of parent but can DEFINE same signature method using its own implementation
     static void show(){
         System.out.println("in MyInterfaceImplementation show");
     }
