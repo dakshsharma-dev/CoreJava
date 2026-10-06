@@ -37,6 +37,20 @@ package _10_Java8;
     (a, b) -> a + b
 
 
+    // Why Lambdas are used?
+    Lambda expressions are used to provide a CONCISE anonymous implementation of a functional interface
+    without creating an anonymous inner class or a separate implementing class.
+
+
+    // Anonymous Inner Class(AIC) are more flexible as compared to Lambdas*************************
+    Lambda:
+    → Can implement only a Functional Interface (exactly 1 abstract method)
+
+    Anonymous Inner Class:
+    → Can implement an interface with multiple abstract methods
+    → Can also extend an abstract class
+
+
     // JAR file: Java Archive
     basically a compressed package containing compiled Java .class files and other resources.
     Lambdas reduce boilerplate source code -> potentially reducing JAR size.

@@ -16,7 +16,7 @@ class Mobile{
 
 
     public void show(){  // instance method
-        // variable created inside a method is called local variable
+        // variable created inside a method is called local variable[not a field of class(instance variable)]
         System.out.println(brand + ": " + price + ": " + name); // in non-static methods, one can use static variables without any issue
     }
 
