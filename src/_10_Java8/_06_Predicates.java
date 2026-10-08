@@ -10,7 +10,7 @@ import java.util.function.Predicate;
      instead of creating a separate method for every condition.
 
      test(value) → executes the predicate and returns true/false.
-
+ 
      filter(predicate) → keeps elements for which the predicate returns true.
 
      Predicate composition:
