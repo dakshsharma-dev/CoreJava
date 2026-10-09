@@ -7,8 +7,22 @@ import java.util.function.Supplier;
 
 public class _09_Supplier {
     public static void main(String[] args) {
+        // Supplier<T> takes no input and returns a value of type T.
+        // Its abstract method is get().
         Supplier<Integer> supplier = () -> 1;
-        System.out.println(supplier.get());
+        System.out.println(supplier.get()); // 1
+
+        // 1. Supply a String
+        Supplier<String> name = () -> "Daksh";
+        System.out.println(name.get()); // Daksh
+
+        // 2. Generate a value when requested
+        Supplier<Double> random = () -> Math.random();
+        System.out.println(random.get());
+
+        // 3. Supply a new object whenever get() is called
+        Supplier<StringBuilder> builder = () -> new StringBuilder();
+        System.out.println(builder.get());
 
 
         Predicate<Integer> predicate = x -> x % 2 == 0;
