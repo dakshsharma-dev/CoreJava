@@ -28,6 +28,7 @@ public class _01_EnhancedForAndForEachAnd_Iterator {
 
 
         // 2. forEach method
+        // forEach() visits each element in the list and performs an action on it.
         System.out.println("forEach method: ");
         list.forEach(name -> System.out.println(name));
 

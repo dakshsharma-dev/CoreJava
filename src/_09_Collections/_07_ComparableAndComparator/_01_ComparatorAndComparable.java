@@ -29,6 +29,12 @@ package _09_Collections._07_ComparableAndComparator;
 
           Comparable has method compareTo(other) because as the name suggests it compares one object with other object -> happens inside the class -> Comparable
 
+
+
+    5. Very important difference
+    Java: Negative means a comes before b; zero means equal in ordering; positive means a comes after b.
+    C++: true means a comes before b; false means it does not.
+
 */
 
 import java.util.ArrayList;
